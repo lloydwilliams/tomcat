@@ -15,3 +15,27 @@ notice:
 1catalina.org.apache.juli.AsyncFileHandler.formatter = java.util.logging.SimpleFormatter
 ```
 
+This produces a log line like this:
+
+```
+2023-05-13T19:15:16.673-0400 INFO [org.apache.catalina.startup.Catalina start] Server startup in [935] milliseconds
+```
+
+
+
+## Datadog Pipeline Configuration
+
+```
+tomcat1 %{date("yyyy-MM-dd'T'HH:mm:ss.SSSZ"):timestamp}\s+%{word:status}\s+\[%{data:java.class}\s+%{word:java.method}\]\s+%{data:msg}
+
+date_msg_status %{date("yyyy-MM-dd'T'HH:mm:ss.SSSZ"):timestamp}\s+%{word:status}\s+%{data:msg}
+
+date_message %{date("yyyy-MM-dd'T'HH:mm:ss.SSSZ"):timestamp}\s+%{data:msg}
+
+message_default %{data:msg}
+```
+
+
+
+
+
