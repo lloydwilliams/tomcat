@@ -35,6 +35,8 @@ date_message %{date("yyyy-MM-dd'T'HH:mm:ss.SSSZ"):timestamp}\s+%{data:msg}
 message_default %{data:msg}
 ```
 
+For that log line, Datadog will match on the first rule and parse the line as follows.
+
 ![matched](images/matched.png)
 
 
